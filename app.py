@@ -1,9 +1,16 @@
-import streamlit as st
-import pickle
 import nltk
 
-nltk.download('punkt')
-nltk.download('stopwords')
-nltk.download('wordnet')
+try:
+    nltk.data.find('tokenizers/punkt')
+except LookupError:
+    nltk.download('punkt')
 
-from preprocessing import clean
+try:
+    nltk.data.find('corpora/stopwords')
+except LookupError:
+    nltk.download('stopwords')
+
+try:
+    nltk.data.find('corpora/wordnet')
+except LookupError:
+    nltk.download('wordnet')
